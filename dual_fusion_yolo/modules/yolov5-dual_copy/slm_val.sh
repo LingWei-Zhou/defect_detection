@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH -J test
+#SBATCH -p gpu
+#SBATCH -N 1
+#SBATCH --ntasks=4
+#SBATCH --gres=gpu:1
+#SBATCH --mem=3G
+
+module load shared
+module add anaconda3
+module add cudnn8.1-cuda11.2/8.1.1.33
+
+
+# 重新进入conda环境
+source activate
+
+# conda激活自定义环境
+conda activate zlw2
+
+python val.py --data data/demage_rgb_effect_liard_reflex.yaml --weights /home/zhoulingwei/pycharm_project_258/dual_conv_fusion_yolov5-20.04_2_changemodel/modules/yolov5-dual_copy/runs/train/delect_spff_Cbam_reflex/weights/best.pt
