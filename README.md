@@ -12,3 +12,43 @@ pip install labelme
 
 ![](https://github.com/LingWei-Zhou/defect_detection/assets/108880900/fba9b7f4-1403-4c67-8c91-c7223a511604)
 
+## 3.模型融合
+- 保存初始模型 <br>
+
+  下载合适的初始模型至 \dual_backbone_fusion_yolo\modules\yolov5-dual_copy\weights 
+
+- 安装环境 <br>
+
+  ```
+  conda create -n yolov5_d python=3.8
+  conda activate yolov5_d
+  cd dual_backbone_fusion_yolo
+  pip install -r requirements.txt
+  ```
+- 保存点云的视角转换数据以及视觉图像
+  
+- 修改图像的参数路径
+
+  生成数据的.yaml文件，用于保存训练集和数据集的路径文本文件，在train.py文件中修改文件路径。
+
+- 训练及测试
+
+  运行指令
+  ```
+  python train.py
+  python detect.py
+  ```
+## 4.检测优化
+运行 matlab/fangcha_tiqu.m 使用RANSAC算法剔除地面。
+
+- 点云数据投影添加空间信息
+  ```
+  cd \dual_backbone_fusion_yolo_indistance\modules\yolov5-dual_input_distance
+  python detect.py
+  ```
+- 双目测距添加空间信息
+  同时得到双目视图，运行
+  ```
+  python detect copy2.py
+  ```
+  生成带有空间信息的检测框。
