@@ -39,16 +39,20 @@ pip install labelme
   python detect.py
   ```
 ## 4.检测优化
-运行 matlab/fangcha_tiqu.m 使用RANSAC算法剔除地面。
+运行 matlab/fangcha_tiqu.m 使用RANSAC算法剔除地面，地面提取效果如下：
+![](https://github.com/LingWei-Zhou/defect_detection/assets/108880900/62d82b0c-61f0-4249-8751-46144fab4e83)
 
 - 点云数据投影添加空间信息
   ```
   cd \dual_backbone_fusion_yolo_indistance\modules\yolov5-dual_input_distance
   python detect.py
   ```
+  ![Q](https://github.com/LingWei-Zhou/defect_detection/assets/108880900/c5275a13-d68a-4b0d-b830-cdf3d13169b1)
 - 双目测距添加空间信息
   同时得到双目视图，运行
   ```
   python detect copy2.py
   ```
   生成带有空间信息的检测框。
+
+  ![](https://github.com/LingWei-Zhou/defect_detection/assets/108880900/06168092-1a71-44d0-808b-919736b0325d)
